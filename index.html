@@ -12,7 +12,7 @@
   </head>
   
   <body bgcolor="#ffffff" background="" marginwidth="0" marginheight="0"
-  onload="startAT('1');">
+  onload="startAT('1');" data-spy="scroll">
     <div class="section">
       <div class="container">
         <div class="row">
@@ -212,12 +212,13 @@
               through a divorce. Please check out where I went with my assignment!</p>
             <title>Untitled QnA</title>
             <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
-            <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+            <meta content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"
+            name="viewport">
             <meta name="apple-mobile-web-app-capable" content="no">
             <meta name="apple-mobile-web-app-status-bar-style" content="black">
-            <meta property="og:type" content="website">
+            <meta content="website" property="og:type">
             <meta property="og:image" content="">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta content="IE=edge" http-equiv="X-UA-Compatible">
             <link rel="apple-touch-icon" href="http://www.qnamarkup.org/images/QnA_300.png">
             <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
             <script src="//code.jquery.com/jquery-1.10.2.js"></script>
@@ -1235,6 +1236,26 @@
                                   		}
                                   	}
                                   
+                                  	
+                                  	function scroll2Q(id) {
+                                  		var top = document.getElementById(id).offsetTop; //Getting Y of target element
+                                  		console.log("Jump to Y for ("+id+"): "+top);
+                                  		//adapted from https://github.com/Yappli/smooth-scroll
+                                  		var speed = 800;
+                                  		var moving_frequency = 5; // Affects performance !
+                                  		var hop_count = speed/moving_frequency
+                                          var getScrollTopDocumentAtBegin = document.documentElement.scrollTop + document.body.scrollTop;
+                                          var gap = (top - getScrollTopDocumentAtBegin) / hop_count;
+                                  		for(var i = 1; i <= hop_count; i++)
+                                          {
+                                          	(function()
+                                             	{
+                                             		var hop_top_position = gap*i;
+                                             	    setTimeout(function(){  window.scrollTo(0, hop_top_position + getScrollTopDocumentAtBegin); }, moving_frequency*i);
+                                             	 })();
+                                          }
+                                  	}
+                                  
                                   	function getElementsByIdIs(selectorTag, name) {
                                   		var items = [];
                                   		var myPosts = document.getElementsByTagName(selectorTag);
@@ -1464,8 +1485,8 @@
                                   playing around&nbsp;with A2J, I decided to build a little questionaire
                                   to inquire about ones current experience in law school. Please check out
                                   where I went with my assignment!</p>
-                                <a class="btn btn-block btn-primary">My A2J</a>
-                                href="http://www.a2jauthor.org/app/js/viewer/desktop.min.html?templateURL=%2Fapp%2Fuserfiles%2Fpublic%2Fchelseajoy%2Fguides%2FGuide2275%2F2016-01-31-16-28-05%2FGuide.xml&amp;fileDataURL=..%2Ftests%2Fdata%2F&amp;getDataURL=A2J_ViewerAnswerGet.php%3FanswersID%3D%26rnd%3D0.7721409564837813&amp;setDataURL=A2J_ViewerAnswerSet.php%3FanswersID%3D&amp;autoSetDataURL=A2J_ViewerAutoSetData.php%3FanswersID%3D&amp;exitURL=A2J_ViewerExit.html&amp;logURL=A2J_ViewerLog.php&amp;errRepURL=A2J_ViewerErrRep.php">My A2J</a
+                                <a class="btn btn-block btn-primary"
+                                href="http://www.a2jauthor.org/app/js/viewer/desktop.min.html?templateURL=%2Fapp%2Fuserfiles%2Fpublic%2Fchelseajoy%2Fguides%2FGuide2275%2F2016-01-31-16-28-05%2FGuide.xml&amp;fileDataURL=..%2Ftests%2Fdata%2F&amp;getDataURL=A2J_ViewerAnswerGet.php%3FanswersID%3D%26rnd%3D0.7721409564837813&amp;setDataURL=A2J_ViewerAnswerSet.php%3FanswersID%3D&amp;autoSetDataURL=A2J_ViewerAutoSetData.php%3FanswersID%3D&amp;exitURL=A2J_ViewerExit.html&amp;logURL=A2J_ViewerLog.php&amp;errRepURL=A2J_ViewerErrRep.php">My A2J</a>
                                 <p class="text-center">
                                   <br>
                                   <br>
