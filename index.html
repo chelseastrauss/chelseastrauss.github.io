@@ -1272,26 +1272,6 @@
                                                                                                                                               			swapGOTO(Qhtml,JH);
                                                                                                                                               		}
                                                                                                                                               	}
-                                                                                                                                              
-                                                                                                                                              	
-                                                                                                                                              	function scroll2Q(id) {
-                                                                                                                                              		var top = document.getElementById(id).offsetTop; //Getting Y of target element
-                                                                                                                                              		console.log("Jump to Y for ("+id+"): "+top);
-                                                                                                                                              		//adapted from https://github.com/Yappli/smooth-scroll
-                                                                                                                                              		var speed = 800;
-                                                                                                                                              		var moving_frequency = 5; // Affects performance !
-                                                                                                                                              		var hop_count = speed/moving_frequency
-
-                                                                                                                                              		for(var i = 1; i <= hop_count; i++)
-                                                                                                                                                      {
-                                                                                                                                                      	(function()
-                                                                                                                                                         	{
-                                                                                                                                                         		var hop_top_position = gap*i;
-                                                                                                                                                         	    setTimeout(function(){  window.scrollTo(0, hop_top_position + getScrollTopDocumentAtBegin); }, moving_frequency*i);
-                                                                                                                                                         	 })();
-                                                                                                                                                      }
-                                                                                                                                              	}
-                                                                                                                                              
                                                                                                                                               	function getElementsByIdIs(selectorTag, name) {
                                                                                                                                               		var items = [];
                                                                                                                                               		var myPosts = document.getElementsByTagName(selectorTag);
