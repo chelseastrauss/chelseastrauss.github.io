@@ -1228,7 +1228,11 @@
                                                                                                           		if (restar == undefined) {
                                                                                                           			document.getElementById('Choices').innerHTML += "<a href=\"javascript:void('');\" class=\"qabutton\" onClick=\"startAT('1');\"><span class=\"qpad\">Start over.</span></a>";
                                                                                                           		}
-
+                                                                                                          				
+                                                                                                          		if (QNum != 0) { 
+                                                                                                          			scroll2Q(Jht);           	
+                                                                                                          		} else if (restar != undefined) {
+                                                                                                          			window.scrollTo(0,0);
                                                                                                           		}
                                                                                                           		if (Xishere != 0 && window.self == window.top) {
                                                                                                           			console.log("Set focus for: "+Xishere);
@@ -1268,7 +1272,27 @@
                                                                                                           			swapGOTO(Qhtml,JH);
                                                                                                           		}
                                                                                                           	}
-
+                                                                                                          
+                                                                                                          	
+                                                                                                          	function scroll2Q(id) {
+                                                                                                          		var top = document.getElementById(id).offsetTop; //Getting Y of target element
+                                                                                                          		console.log("Jump to Y for ("+id+"): "+top);
+                                                                                                          		//adapted from https://github.com/Yappli/smooth-scroll
+                                                                                                          		var speed = 800;
+                                                                                                          		var moving_frequency = 5; // Affects performance !
+                                                                                                          		var hop_count = speed/moving_frequency
+                                                                                                                  var getScrollTopDocumentAtBegin = document.documentElement.scrollTop + document.body.scrollTop;
+                                                                                                                  var gap = (top - getScrollTopDocumentAtBegin) / hop_count;
+                                                                                                          		for(var i = 1; i <= hop_count; i++)
+                                                                                                                  {
+                                                                                                                  	(function()
+                                                                                                                     	{
+                                                                                                                     		var hop_top_position = gap*i;
+                                                                                                                     	    setTimeout(function(){  window.scrollTo(0, hop_top_position + getScrollTopDocumentAtBegin); }, moving_frequency*i);
+                                                                                                                     	 })();
+                                                                                                                  }
+                                                                                                          	}
+                                                                                                          
                                                                                                           	function getElementsByIdIs(selectorTag, name) {
                                                                                                           		var items = [];
                                                                                                           		var myPosts = document.getElementsByTagName(selectorTag);
@@ -1476,10 +1500,7 @@
                                     <u>My A2J Experience&nbsp;</u>
                                   </b>
                                   <br>
-                                    <u>What is A2J?&nbsp;</u>
-                                  </b>
-                                  <br> 
-                                  <br>Access to Justice Author (A2J Author®) is a cloud based software
+                                  <br>What is A2J? Access to Justice Author (A2J Author®) is a cloud based software
                                   tool that delivers greater access to justice for self-represented litigants
                                   by enabling non-technical authors from the courts, clerk’s offices, legal
                                   services organizations, and law schools to rapidly build and implement
